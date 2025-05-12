@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/pages/Home';
+import Table from './components/pages/Table';
+import NotFound from './components/pages/NotFound';
+import Header from "./components/views/Header"
+import Footer from "./components/views/Footer";
+import { Container } from 'react-bootstrap';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { applyMiddleware, createStore } from 'redux';
 
-function App() {
+
+const store = createStore(applyMiddleware(thunk));
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="my-4">
+      <Header />
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/table/:id" element={<Table />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Provider>
+      <Footer />
+    </Container>
   );
 }
+
 
 export default App;
