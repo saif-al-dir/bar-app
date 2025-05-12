@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Container, Card, Spinner, Alert } from 'react-bootstrap';
+import TableEdit from './TableEdit';
 
 const Table = () => {
     const { id } = useParams();
@@ -29,6 +30,7 @@ const Table = () => {
                     <p><strong>Status:</strong> {table.status}</p>
                     <p><strong>People:</strong> {table.peopleAmount} / {table.maxPeopleAmount}</p>
                     <p><strong>Bill:</strong> ${table.bill}</p>
+                    <TableEdit />
                 </Card.Body>
             </Card>
         </Container>
