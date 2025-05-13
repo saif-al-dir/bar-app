@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Form, Button, Container, Spinner, Alert, Card } from 'react-bootstrap';
+import { API_URL } from '../../config';
 
 const TableEdit = () => {
     const { id } = useParams();
@@ -9,7 +10,7 @@ const TableEdit = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3131/api/tables/${id}`)
+        fetch(`${API_URL}/tables/${id}`)
             .then(res => {
                 if (!res.ok) throw new Error('Failed to fetch table');
                 return res.json();
@@ -20,7 +21,7 @@ const TableEdit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:3131/api/tables/${id}`, {
+        fetch(`${API_URL}/tables/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

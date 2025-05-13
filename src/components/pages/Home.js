@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Container, Card, Spinner, Alert, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../config';
 
 const Home = () => {
     const [tables, setTables] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3131/api/tables')
+        fetch(`${API_URL}/tables`)
             .then(res => {
                 if (!res.ok) throw new Error('Network response was not ok');
                 return res.json();

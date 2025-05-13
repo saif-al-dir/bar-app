@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Container, Card, Spinner, Alert } from 'react-bootstrap';
 import TableEdit from './TableEdit';
+import { API_URL } from '../../config';
 
 const Table = () => {
     const { id } = useParams();
@@ -9,7 +10,7 @@ const Table = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3131/api/tables/${id}`)
+        fetch(`${API_URL}/tables/${id}`)
             .then(res => {
                 if (!res.ok) throw new Error('Network response was not ok');
                 return res.json();
