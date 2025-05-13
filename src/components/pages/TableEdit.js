@@ -61,7 +61,7 @@ const TableEdit = () => {
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>People Amount</Form.Label>
+                        <Form.Label>People</Form.Label>
                         <Form.Control
                             type="number"
                             name="peopleAmount"
@@ -69,17 +69,6 @@ const TableEdit = () => {
                             onChange={handleChange}
                             min={0}
                             max={table.maxPeopleAmount}
-                        />
-                    </Form.Group>
-
-                    <Form.Group className="mb-3">
-                        <Form.Label>Max People</Form.Label>
-                        <Form.Control
-                            type="number"
-                            name="maxPeopleAmount"
-                            value={table.maxPeopleAmount}
-                            onChange={handleChange}
-                            min={1}
                         />
                     </Form.Group>
 
@@ -95,7 +84,7 @@ const TableEdit = () => {
                         />
                     </Form.Group>
 
-                    <Button type="submit" variant="success">Save</Button>
+                    <Button type="submit" variant="success">Update</Button>
                 </Form>
             </Card>
         </Container>
